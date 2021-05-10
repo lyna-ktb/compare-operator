@@ -1,0 +1,24 @@
+.yatch{
+  background-image: url("../../assets/img/yatch.jpg");
+  height: 650px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: top;
+}
+.homeContent{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: white;
+  h1, h3{
+    color: white;
+  }
+}
+.create{
+  background-color: orange;
+  width: 8vw;
+  border-radius: 10px;
+}

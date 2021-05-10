@@ -1,0 +1,391 @@
+.find-content{
+  background-color: #2B78E4;
+}
+.result{
+  text-align: center;
+}
+.filter{
+  display: flex;
+  justify-content: space-around;
+  border: solid 3px black;
+  align-items: center;
+}
+/* --------------------------------
+
+File#: _1_card-v10
+Title: Card v9
+Descr: Container of information used as teaser for further content exploration
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+/* #region (--state-1 & --state-2) */
+.card-v10 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.card-v10__img-link {
+  position: relative;
+  z-index: 2;
+  display: block;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-v10__content-wrapper {
+  padding: 0 var(--space-xxxs); // content right/left margins
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+}
+
+.card-v10__content {
+  --card-body-offset: 20px; // push the content up to hide top right/left border radius
+  padding-top: var(--card-body-offset);
+  margin-top: calc(-1 * var(--card-body-offset));
+  height: calc(100% + var(--card-body-offset));
+  display: flex;
+  flex-direction: column;
+}
+
+.card-v10__body {
+  padding: var(--space-sm);
+}
+
+.card-v10__label {
+  font-size: var(--text-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.card-v10__title {
+  font-size: var(--text-md);
+}
+
+.card-v10__excerpt {
+  font-size: var(--text-sm);
+}
+
+.card-v10__footer {
+  margin-top: auto; // push footer down
+  padding: var(--space-xs);
+  border-top: 1px solid alpha(var(--color-contrast-higher), 0.15);
+}
+
+.card-v10__social-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.card-v10__social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-xxs);
+  font-size: var(--text-xs);
+  transition: .2s;
+
+  .icon {
+    font-size: 12px; // icon size
+    margin-right: var(--space-xxs);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: alpha(var(--color-contrast-higher), 0.075);
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+/* #endregion */
+
+/* #region (--state-1) */
+.card-v10--state-1 {}
+/* #endregion */
+
+/* #region (--state-2) */
+.card-v10--state-2 {
+  @include breakpoint(md) {
+    display: grid;
+    grid-template-columns: 0.75fr 1fr;
+
+    .card-v10__content-wrapper {
+      padding: var(--space-xs) 0; // content top/bottom margins
+    }
+
+    .card-v10__content {
+      // reset
+      padding-top: 0;
+      margin-top: 0;
+      height: 100%;
+
+      padding-left: var(--card-body-offset);
+      margin-left: calc(-1 * var(--card-body-offset));
+    }
+
+    .card-v10__body {
+      padding: var(--space-md);
+    }
+
+    .card-v10__title {
+      font-size: var(--text-xl);
+    }
+
+    .card-v10__excerpt {
+      font-size: 1em;
+    }
+
+    .card-v10__social-btn {
+      padding: var(--space-xs);
+    }
+  }
+}
+.sidebar{
+  height: 1240px;
+  border: solid 1px black;
+}
+.article-find{
+  display: flex;
+}
+.contener{
+  display: flex;
+  flex-wrap: wrap;
+}
+.bar-right{
+  display: flex;
+  flex-direction: column;
+
+}
+.bottom-bar{
+  border: solid 1px black;
+}
+
+
+/* --------------------------------
+
+File#: N/A
+Title: Swipe Content
+Descr: A Vanilla JavaScript plugin to detect touch interactions
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.swipe-content { // demo
+  height: 280px;
+  width: 280px;
+  background-color: var(--color-contrast-low);
+  border-radius: var(--radius-md);
+  cursor: default;
+  transition: background 0.2s;
+
+  &:active {
+    background-color: var(--color-contrast-medium);
+  }
+}
+
+/* --------------------------------
+
+File#: _2_carousel
+Title: Carousel
+Descr: Display and cycle through a collection of items
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+:root {
+  --carousel-grid-gap: var(--space-xs);
+  --carousel-item-auto-size: 260px; // min-width value -> used in JS to auto update the carousel items width
+  --carousel-transition-duration: 0.5s;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel__list {
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform;
+}
+
+.carousel__item {
+  flex-shrink: 0;
+  width: var(--carousel-item-auto-size);
+  margin-right: var(--carousel-grid-gap);
+  margin-bottom: var(--carousel-grid-gap);
+}
+
+.js {
+  .carousel__list--animating {
+    transition-property: transform;
+    transition-duration: var(--carousel-transition-duration);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .carousel__item { // hide items while the carousel is initialized in JS
+    opacity: 0;
+    margin-bottom: 0;
+  }
+
+  .carousel--loaded .carousel__item { // reveal items
+    opacity: 1;
+  }
+
+  .carousel:not(.carousel--is-dragging) .carousel__list:not(.carousel__list--animating) .carousel__item[tabindex="-1"] > * {
+    visibility: hidden; // hide content of off-canvas items so that they are not focusable
+  }
+
+  .carousel[data-drag="on"] .carousel__item { // if drag = enabled
+    user-select: none;
+
+    img {
+      pointer-events: none;
+    }
+  }
+}
+
+.carousel__control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+  transition: .2s;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    background-color: var(--color-contrast-lower);
+    color: var(--color-contrast-low);
+    box-shadow: none;
+  }
+
+  .icon {
+    display: block;
+    font-size: 20px; // icon size
+  }
+}
+
+// carousel dots navigation
+.carousel__navigation { // created in JS
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10px); // = button size 👇
+  gap: var(--space-xs); // gap among dots
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--space-sm);
+}
+
+.carousel__nav-item {
+  display: inline-block; // grid fallback
+  margin: 0 var(--space-xxxs);
+
+  @supports (grid-area: auto) {
+    margin: 0;
+  }
+
+  button { // dot
+    display: block;
+    position: relative;
+    font-size: 10px; // ⚠️ button size
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: var(--color-contrast-high);
+    opacity: 0.4;
+    cursor: pointer;
+    transition: background .3s;
+
+    &::before { // focus circle
+      content: '';
+      position: absolute;
+      top: calc(50% - 0.5em);
+      left: calc(50% - 0.5em);
+      font-size: 16px; // focus circle size
+      height: 1em;
+      width: 1em;
+      border-radius: inherit;
+      border: 1px solid var(--color-contrast-high);
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.3s;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.carousel__nav-item--selected button {
+  opacity: 1;
+}
+
+// --pagination
+.carousel__navigation--pagination {
+  grid-template-columns: repeat(auto-fit, minmax(24px, auto));
+
+  .carousel__nav-item button {
+    width: 100%;
+    height: auto;
+    color: var(--color-bg);
+    font-size: var(--text-xs);
+    padding: var(--space-xxxs) var(--space-xxs);
+    border-radius: var(--radius-md);
+    text-align: center;
+
+    &:focus {
+      outline: 1px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+}
+
+html:not(.js) .carousel__list {
+  overflow: visible;
+}
+
+.carousel--hide-controls {
+  .carousel__navigation, .carousel__control {
+    display: none;
+  }
+}

@@ -1,0 +1,43 @@
+/*
+BACKGROUND-VIDEO
+ */
+
+@mixin coverer {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-header {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  &, video, .viewport-header {
+    @include coverer;
+  }
+  video {
+    object-fit: cover;
+  }
+  .viewport-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+.background-video {
+  background: white;
+  position: relative;
+  margin-top: 100vh;
+  &::before {
+    content: "";
+    @include coverer;
+    top: -100vh;
+  }
+
+}

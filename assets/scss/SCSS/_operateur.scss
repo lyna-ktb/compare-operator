@@ -1,0 +1,427 @@
+/* --------------------------------
+
+File#: _1_card-v10
+Title: Card v9
+Descr: Container of information used as teaser for further content exploration
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+
+
+/* #region (--state-1 & --state-2) */
+.card-v10 {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-v10__img-link {
+  position: relative;
+  z-index: 2;
+  display: block;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-v10__content-wrapper {
+  margin-bottom: 3rem;
+  padding: 0 var(--space-xxxs); // content right/left margins
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+}
+
+.card-v10__content {
+  --card-body-offset: 20px; // push the content up to hide top right/left border radius
+  padding-top: var(--card-body-offset);
+  margin-top: calc(-1 * var(--card-body-offset));
+  height: calc(100% + var(--card-body-offset));
+  display: flex;
+  flex-direction: column;
+}
+
+.card-v10__body {
+  padding: var(--space-sm);
+}
+
+.card-v10__label {
+  font-size: var(--text-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.card-v10__title {
+  font-size: var(--text-md);
+}
+
+.card-v10__excerpt {
+  font-size: 400px;
+}
+
+.card-v10__footer {
+  margin-top: auto; // push footer down
+  padding: var(--space-xs);
+  border-top: 1px solid alpha(var(--color-contrast-higher), 0.15);
+}
+
+.card-v10__social-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.card-v10__social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-xxs);
+  font-size: var(--text-xs);
+  transition: .2s;
+
+  .icon {
+    font-size: 12px; // icon size
+    margin-right: var(--space-xxs);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: alpha(var(--color-contrast-higher), 0.075);
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+/* #endregion */
+
+/* #region (--state-1) */
+
+/* #endregion */
+
+/* #region (--state-2) */
+.card-v10--state-2 {
+  @include breakpoint(md) {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+
+    .card-v10__content-wrapper {
+      font-size: medium;
+      padding: var(--space-xs) 0; // content top/bottom margins
+    }
+
+    .card-v10__content {
+      // reset
+      padding-top: 0;
+      margin-top: 0;
+      height: 100%;
+
+      padding-left: var(--card-body-offset);
+      margin-left: calc(-1 * var(--card-body-offset));
+    }
+
+    .card-v10__body {
+      padding: var(--space-md);
+    }
+
+    .card-v10__title {
+      font-size: var(--text-xl);
+    }
+
+    .card-v10__excerpt {
+      font-size: 1em;
+    }
+
+    .card-v10__social-btn {
+      padding: var(--space-xs);
+    }
+  }
+}
+/* #endregion */
+
+
+/* --------------------------------
+
+File#: _1_reading-progressbar
+Title: Reading Progress Bar
+Descr: A bar indicator displaying the current reading progress
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.reading-progressbar {
+  position: fixed;
+  z-index: var(--zindex-fixed-element);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  color: var(--color-primary); // fill color
+  pointer-events: none;
+  display: none;
+}
+
+.reading-progressbar--is-active { // if JS = enabled && content is scrollable
+  display: block;
+}
+
+.reading-progressbar::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.reading-progressbar::-webkit-progress-value {
+  background-color: currentColor;
+}
+
+.reading-progressbar::-moz-progress-bar {
+  background-color: currentColor;
+}
+
+.reading-progressbar__fallback {
+  // fallback for brawsers not supporting the <progress> element
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: currentColor;
+}
+
+.reading-content { // demo style
+  padding: var(--space-md);
+}
+
+/* --------------------------------
+
+File#: _1_modal-window
+Title: Modal Window
+Descr: A modal dialog used to display critical information
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.modal {
+  position: fixed;
+  z-index: var(--zindex-overlay);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+
+  #comment{
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  &:not(.modal--is-visible) {
+    pointer-events: none;
+    background-color: transparent;
+  }
+}
+
+.modal--is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+// close button
+.modal__close-btn {
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: .2s;
+
+  .icon {
+    display: block;
+    margin: auto;
+  }
+}
+
+.modal__close-btn--outer { // close button - outside the modal__content
+  width: 48px;
+  height: 48px;
+  position: fixed;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: var(--zindex-fixed-element);
+  background-color: alpha(var(--color-contrast-higher), 0.8);
+
+  &:hover {
+    background-color: var(--color-contrast-higher);
+  }
+
+  .icon {
+    color: var(--color-bg); // icon color
+  }
+}
+
+.modal__close-btn--inner { // close button - inside the modal__content
+  width: 2em;
+  height: 2em;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+
+  .icon {
+    color: inherit; // icon color
+  }
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// animations
+:root {
+  --modal-transition-duration: 0.2s; // fallback (i.e., unless specified differently in the variations 👇)
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .modal--animate-fade {
+    --modal-transition-duration: 0.2s;
+    transition: opacity var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s var(--modal-transition-duration);
+
+    &.modal--is-visible {
+      transition: opacity var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s;
+    }
+  }
+
+  .modal--animate-scale,
+  .modal--animate-translate-up,
+  .modal--animate-translate-down,
+  .modal--animate-translate-right,
+  .modal--animate-translate-left {
+    --modal-transition-duration: .2s;
+    transition: opacity var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s var(--modal-transition-duration);
+
+    .modal__content {
+      will-change: transform;
+      transition: transform var(--modal-transition-duration) var(--ease-out);
+    }
+
+    &.modal--is-visible {
+      transition: opacity var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s;
+
+      .modal__content {
+        transform: scale(1); // reset all transformations
+      }
+    }
+  }
+
+  .modal--animate-slide-up,
+  .modal--animate-slide-down,
+  .modal--animate-slide-right,
+  .modal--animate-slide-left {
+    --modal-transition-duration: 0.3s;
+    transition: opacity 0s var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s var(--modal-transition-duration);
+
+    .modal__content {
+      will-change: transform;
+      transition: transform var(--modal-transition-duration) var(--ease-out);
+    }
+
+    &.modal--is-visible {
+      transition: background-color var(--modal-transition-duration), visibility 0s;
+
+      .modal__content {
+        transform: scale(1); // reset all transformations
+      }
+    }
+  }
+
+  // scale
+  .modal--animate-scale {
+    .modal__content {
+      transform: scale(0.95);
+    }
+  }
+
+  // translate
+  .modal--animate-translate-up {
+    .modal__content {
+      transform: translateY(40px);
+    }
+  }
+
+  .modal--animate-translate-down {
+    .modal__content {
+      transform: translateY(-40px);
+    }
+  }
+
+  .modal--animate-translate-right {
+    .modal__content {
+      transform: translateX(-40px);
+    }
+  }
+
+  .modal--animate-translate-left {
+    .modal__content {
+      transform: translateX(40px);
+    }
+  }
+
+  // slide
+  .modal--animate-slide-up {
+    .modal__content {
+      transform: translateY(100%);
+    }
+  }
+
+  .modal--animate-slide-down {
+    .modal__content {
+      transform: translateY(-100%);
+    }
+  }
+
+  .modal--animate-slide-right {
+    .modal__content {
+      transform: translateX(-100%);
+    }
+  }
+
+  .modal--animate-slide-left {
+    .modal__content {
+      transform: translateX(100%);
+    }
+  }
+}
+
+// load content - optional
+.modal--is-loading {
+  .modal__content {
+    visibility: hidden;
+  }
+
+  .modal__loader {
+    display: flex;
+  }
+}
+
+.modal__loader { // loader icon
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  pointer-events: none;
+}

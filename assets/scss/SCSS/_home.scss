@@ -1,0 +1,790 @@
+
+
+
+/* --------------------------------
+
+File#: _2_card-v13
+Title: Card v13
+Descr: Container of information used as teaser for further content exploration
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.card-v13 {
+  --transition-duration: .3s;
+}
+
+.card-v13__figure-wrapper {
+  display: block;
+}
+
+.card-v13__figure {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+  transition: clip-path var(--transition-duration) var(--ease-out);
+
+  img {
+    display: block;
+    width: 100%;
+    transform: scale(1.1);
+    filter: grayscale(100%);
+
+    transition: transform var(--transition-duration) var(--ease-out), filter var(--transition-duration);
+  }
+
+  .card-v13__figure-wrapper:hover & {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+    img {
+      transform: scale(1);
+      filter: grayscale(0%);
+    }
+  }
+}
+
+.card-v13__separator {
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: alpha(var(--color-contrast-higher), 0.1);
+}
+
+/* --------------------------------
+
+File#: _1_button-effects
+Title: Button Effects
+Descr: A collection of button effects
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+// v1
+.btn-fx-1 {
+  --border-radius: 0.25em;
+  --transition-duration: .3s;
+  position: relative;
+  display: inline-block;
+  border-radius: var(--border-radius);
+
+  line-height: 1;
+  text-decoration: none;
+  color: var(--color-primary); // text color
+  transition: var(--transition-duration);
+  @include fontSmooth;
+
+  cursor: pointer;
+
+  span,
+  .btn-fx-1__icon-wrapper {
+    // place label and icon above animated background
+    position: relative;
+    z-index: 2;
+  }
+
+  .icon {
+    display: block;
+    will-change: transform;
+    transition: var(--transition-duration);
+  }
+
+  .icon:first-child {
+    color: var(--color-primary); // icon color
+  }
+
+  .icon:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    color: var(--color-white); // icon color on hover
+    transform: translateY(100%);
+  }
+
+  &:hover {
+    color: var(--color-white); // text color on hover
+
+    .icon:first-child {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+
+    .icon:last-child {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    & .btn-fx-1__inner::after {
+      transform: skewY(0deg) scaleY(2);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-bg), 0 0 0 3px var(--color-primary);
+  }
+}
+
+.btn-fx-1__inner {
+  // trick - used to fix issue on Safari
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; // vertically align label + icon
+
+  background-color: alpha(var(--color-primary), 0.15); // starting bg color
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round var(--border-radius));
+
+  &::after {
+    // animated background
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: -5%;
+    width: 110%;
+    height: 100%;
+    background-color: var(--color-primary); // ending bg color
+    transform-origin: center bottom;
+    transform: skewY(10deg) scaleY(0);
+    transition: transform var(--transition-duration);
+  }
+}
+
+// v2
+.btn-fx-2 {
+  position: relative;
+
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  span {
+    position: relative;
+    display: inline-flex;
+    clip-path: inset(0%);
+  }
+
+  em {
+    display: inline-flex;
+
+    * {
+      color: var(--color-primary); // text color
+      padding: 0.25em 0;
+      will-change: transform;
+      transition: transform .3s;
+    }
+
+    &:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      * {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    // animated line
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    left: 0;
+    width: 100%;
+  }
+
+  &::before {
+    // bg
+    background-color: alpha(var(--color-primary), 0.2);
+  }
+
+  &::after {
+    // filling effect
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transition: transform .3s;
+    transform-origin: right center;
+  }
+
+  &:hover {
+
+    // :nth-child(x), where x = number of letters
+    em {
+      *:nth-child(2) {
+        transition-delay: .05s;
+      }
+
+      *:nth-child(3) {
+        transition-delay: .1s;
+      }
+
+      *:nth-child(4) {
+        transition-delay: .15s;
+      }
+
+      *:nth-child(5) {
+        transition-delay: .2s;
+      }
+
+      *:nth-child(6) {
+        transition-delay: .25s;
+      }
+
+      *:nth-child(7) {
+        transition-delay: .3s;
+      }
+
+      *:nth-child(8) {
+        transition-delay: .35s;
+      }
+
+      *:nth-child(9) {
+        transition-delay: .4s;
+      }
+
+      *:nth-child(10) {
+        transition-delay: .45s;
+      }
+    }
+
+    em:first-child {
+      * {
+        transform: translateY(-100%);
+      }
+    }
+
+    em:last-child {
+      * {
+        transform: translateY(0);
+      }
+    }
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left center;
+    }
+  }
+}
+
+// v3
+.btn-fx-3 {
+  --transition-duration: 0.3s;
+  position: relative;
+  display: inline-block;
+
+  color: var(--color-bg);
+  line-height: 1;
+  text-decoration: none;
+  @include fontSmooth;
+
+  cursor: pointer;
+
+  will-change: transform;
+  transition: transform var(--transition-duration);
+
+  span {
+    // text label
+    will-change: transform;
+    transition: opacity var(--transition-duration), transform var(--transition-duration) var(--ease-out);
+  }
+
+  &::before {
+    // animated background
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-contrast-higher);
+    border-radius: inherit;
+    will-change: transform;
+    transition: transform var(--transition-duration) var(--ease-out-back), box-shadow var(--transition-duration);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &:hover {
+    span {
+      // text label
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    &::before {
+      // bg
+      transform: scale(1.1);
+    }
+
+    .btn-fx-3__icon-wrapper {
+      // icon
+      transform: translateY(0);
+    }
+  }
+
+  &:focus {
+    outline: none;
+
+    &::before {
+      box-shadow: var(--shadow-sm), 0 0 0 3px alpha(var(--color-contrast-higher), 0.15);
+    }
+  }
+}
+
+.btn-fx-3__inner {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  clip-path: inset(0%);
+}
+
+.btn-fx-3__icon-wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+  transform: translateY(100%);
+  transition: transform var(--transition-duration) var(--ease-out);
+
+  .icon {
+    margin: auto;
+  }
+}
+
+// v4
+.btn-fx-4 {
+  --transition-duration: .3s;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-contrast-higher);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+
+  line-height: 1;
+  text-decoration: none;
+  color: var(--color-bg);
+  @include fontSmooth;
+
+  transition: var(--transition-duration);
+
+  span {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before {
+    // shiny effect
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: alpha(var(--color-bg), 0.25);
+    will-change: transform;
+    transform: skewX(-15deg) translate(calc(-100% - 0.5em));
+    pointer-events: none;
+  }
+
+  &:hover {
+    &::before {
+      transform: skewX(-15deg) translate(calc(100% + 0.5em));
+      transition: transform var(--transition-duration);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--shadow-sm), 0 0 0 3px alpha(var(--color-contrast-higher), 0.15);
+  }
+}
+
+
+/* --------------------------------
+
+File#: _2_products-gallery
+Title: Products Gallery
+Descr: A gallery of product cards
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.products-gallery {
+  /* --------------------------------
+
+File#: _1_product-card
+Title: Product Card
+Descr: A selection of product information used as teasers for further content
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+  .prod-card {
+    position: relative;
+  }
+
+  .prod-card__img-link {
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      .prod-card__img {
+        opacity: 0.85;
+      }
+    }
+  }
+
+  .prod-card__img {
+    transition: opacity .2s;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .prod-card__badge {
+    position: absolute;
+    z-index: 1;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background-color: alpha(var(--color-bg), 0.95);
+    padding: var(--space-xxs) var(--space-sm);
+
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-contrast-medium);
+    font-weight: 500;
+  }
+
+
+
+  .prod-card__price--old {
+    color: var(--color-accent);
+    text-decoration: line-through;
+
+    &::before {
+      content: 'original price';
+      @include srHide;
+    }
+  }
+
+  .prod-card__price--new {
+    text-decoration: none;
+
+    &::before {
+      content: 'discounted price';
+      @include srHide;
+    }
+  }
+}
+
+
+/* --------------------------------
+
+File#: _1_article-preview-v2
+Title: Article Preview v2
+Descr: Blog post excerpt, containing a link to the article page
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.story-v2 {
+
+  .story-v2__meta {
+    a {
+      color: var(--color-contrast-high);
+      transition: .2s;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+
+    span[role="separator"] {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      vertical-align: middle;
+      background-color: var(--color-contrast-low);
+      border-radius: 50%;
+      margin: 0 var(--space-xxxs);
+    }
+  }
+
+  .story-v2__headline {
+    a {
+      color: var(--color-contrast-higher);
+      text-decoration: underline;
+      background-repeat: no-repeat;
+      background-image: linear-gradient(transparent 50%, alpha(var(--color-primary), 0.2) 50%);
+      background-size: 0% 100%;
+      will-change: background-size;
+      transition: background-size .3s var(--ease-in-out);
+
+      &:hover {
+        background-size: 100% 100%;
+      }
+    }
+  }
+
+  .story-v2__excerpt {
+    color: var(--color-contrast-medium);
+  }
+
+  .story-v2__img {
+    display: block;
+    transition: opacity .2s;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  // --featured
+  @include breakpoint(md) {
+    .story-v2--featured {
+      .story-v2__excerpt {
+        max-width: 70%;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+
+/* --------------------------------
+
+File#: _1_author
+Title: Author
+Descr: Author introduction card
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+:root {
+  --author-img-size: 4em;
+}
+
+.author {
+  display: grid;
+  grid-template-columns: var(--author-img-size) 1fr;
+  grid-gap: var(--space-sm);
+}
+
+.author__img-wrapper {
+  // img link
+  display: inline-block;
+  border-radius: 50%;
+  width: var(--author-img-size);
+  height: var(--author-img-size);
+  overflow: hidden;
+  transition: transform .3s var(--ease-out-back);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    display: block;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+  }
+}
+
+.author__content {
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+// --meta -> show date + read time
+.author--meta {
+  --author-img-size: 3em;
+  align-items: center;
+  grid-gap: var(--space-xs);
+}
+
+// --minimal -> show only author name
+.author--minimal {
+  --author-img-size: 2.4em;
+  align-items: center;
+  grid-gap: var(--space-xxs);
+}
+
+// --featured -> expand author info
+.author--featured {
+  --author-img-size: 6em;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  text-align: center;
+
+  .author__img-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.author__social {
+  // social button
+  display: inline-block;
+  padding: var(--space-xs);
+  background: var(--color-contrast-lower);
+  border-radius: 50%;
+  transition: .2s;
+
+  .icon {
+    display: block;
+    font-size: 16px; // icon size
+    color: var(--color-contrast-high);
+    transition: color .2s;
+  }
+
+  &:hover {
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-sm);
+
+    .icon {
+      color: var(--color-primary);
+    }
+  }
+}
+
+/* --------------------------------
+
+File#: _2_article
+Title: Article
+Descr: Article template
+Usage: codyhouse.co/license
+
+-------------------------------- */
+/* --------------------------------
+
+File#: _1_author
+Title: Author
+Descr: Author introduction card
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+:root {
+  --author-img-size: 4em;
+}
+
+.author {
+  display: grid;
+  grid-template-columns: var(--author-img-size) 1fr;
+  grid-gap: var(--space-sm);
+}
+
+.author__img-wrapper {
+  // img link
+  display: inline-block;
+  border-radius: 50%;
+  width: var(--author-img-size);
+  height: var(--author-img-size);
+  overflow: hidden;
+  transition: transform .3s var(--ease-out-back);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    display: block;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+  }
+}
+
+.author__content {
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+// --meta -> show date + read time
+.author--meta {
+  --author-img-size: 3em;
+  align-items: center;
+  grid-gap: var(--space-xs);
+}
+
+// --minimal -> show only author name
+.author--minimal {
+  --author-img-size: 2.4em;
+  align-items: center;
+  grid-gap: var(--space-xxs);
+}
+
+// --featured -> expand author info
+.author--featured {
+  --author-img-size: 6em;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  text-align: center;
+
+  .author__img-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.author__social {
+  // social button
+  display: inline-block;
+  padding: var(--space-xs);
+  background: var(--color-contrast-lower);
+  border-radius: 50%;
+  transition: .2s;
+
+  .icon {
+    display: block;
+    font-size: 16px; // icon size
+    color: var(--color-contrast-high);
+    transition: color .2s;
+  }
+
+  &:hover {
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-sm);
+
+    .icon {
+      color: var(--color-primary);
+    }
+  }
+}
