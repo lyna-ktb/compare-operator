@@ -1,22 +1,11 @@
-/*.select{
-  border: gray solid 2px;
-  width: auto;
-}
-
-.select-admin{
-  margin-top: 70px;
-  border-radius: 3rem;
-  border: gray 1px;
-  width: 40px;
-}
-
-.admin-link{
-  justify-content: end;
-  align-items: flex-end;
-}
 .admin{
-  margin-top: 7rem;
-}*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
 /* --------------------------------
 
 File#: _1_character-count
@@ -25,7 +14,6 @@ Descr: Show the number of remaining characters while typing
 Usage: codyhouse.co/license
 
 -------------------------------- */
-
 
 
 

@@ -4,11 +4,11 @@
 class Tour_operators
 {
 
-    protected int $id;
-    protected string $name;
+    protected  $id;
+    protected $name;
     protected $grade;
-    protected string $link;
-    protected int $is_premium;
+    protected $link;
+    protected  $is_premium;
     protected $logo;
 
 

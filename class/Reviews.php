@@ -4,9 +4,9 @@
 class Reviews
 {
 
-    protected int $note;
-    protected string $message;
-    protected string $author;
+    protected  $note;
+    protected $message;
+    protected $author;
 
 
     public function __construct(array $donnees){

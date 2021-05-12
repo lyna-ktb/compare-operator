@@ -4,11 +4,11 @@
 class Destinations
 {
     protected $id;
-    protected string $location;
-    protected  int $price;
-    protected int $id_tour_operator;
-    protected string $img;
-    protected string $descri;
+    protected  $location;
+    protected   $price;
+    protected  $id_tour_operator;
+    protected  $img;
+    protected  $descri;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

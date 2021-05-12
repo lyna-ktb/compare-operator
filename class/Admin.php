@@ -4,9 +4,9 @@
 class Admin
 {
 
-    protected int $id;
-    protected string $pseudo;
-    protected string $pass;
+    protected $id;
+    protected $pseudo;
+    protected $pass;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

@@ -5,10 +5,10 @@ include '../include/header.php';
 ?>
 
     <header class="video-header">
-        <video src="/tourop/assets/img/video-4.mp4" autoplay loop playsinline muted></video>
+        <video src="/tourop/assets/img/video2.mp4" autoplay loop playsinline muted></video>
             <div class="viewport-header">
                 <div class="text-component text-center line-height-lg v-space-md margin-bottom-md">
-                    <h1 class="background-h1" style="color: #dcefc6;">Le voyage est le meilleur moyen de se perdre </h1>
+                    <h1 class="background-h1" >Le voyage est le meilleur moyen de se perdre </h1>
                     <p class="color-medium text-md" style="color: white;">et de se retrouver en même temps.</p>
                 </div>
             </div>
@@ -74,55 +74,6 @@ include '../include/header.php';
 
                    <?php } ?>
 
-
-
-
-
-
-                    <!--
-            CARD TWO
-          -->
-
-                    <!--<div class="prod-card col-4@md">
-                        <span class="prod-card__badge" role="text">New <i class="sr-only">product</i></span>
-
-                        <a class="prod-card__img-link" href="#0" aria-label="Description of the link">
-                            <figure class="prod-card__img ">
-                                <img src="/comparoperator/img/logo-2.png" alt="Product preview image">
-                            </figure>
-                        </a>
-
-                        <div class="padding-sm text-center">
-                            <h3><a class="color-inherit" href="/comparoperator/pages/essaie.php">Corse, France</a></h3>
-
-                            <div class="margin-top-xs">
-                                <span class="prod-card__price">$79</span>
-                            </div>
-                        </div>
-                    </div>-->
-
-
-                    <!--
-            CARD THREE
-          -->
-
-                    <!--<div class="prod-card col-4@md">
-                        <a class="prod-card__img-link" href="#0" aria-label="Description of the link">
-                            <figure class="prod-card__img">
-                                <img src="/comparoperator/img/logo-3.jpg" alt="Product preview image">
-                            </figure>
-                        </a>
-
-                        <div class="padding-sm text-center">
-                            <h3><a class="color-inherit" href="#0">Abu Dhabi</a></h3>
-
-                            <div class="margin-top-xs" role="text">
-                                <del class="prod-card__price prod-card__price--old">$79</del>
-                                <ins class="prod-card__price prod-card__price--new">$49</ins>
-                            </div>
-                        </div>
-
-                    </div>-->
                 </div>
             </div>
         </section>
@@ -130,11 +81,11 @@ include '../include/header.php';
     </main>
 
     <br>
+
     <div class="flex flex-column border-top padding-y-xs margin-top-lg flex-row@md justify-between@md items-center@md">
         <div class="margin-bottom-sm margin-bottom-0@md">
         </div>
     </div>
-
 
     <footer class="main-footer position-relative z-index-1 padding-top-md ">
         <div class="container max-width-lg">

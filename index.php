@@ -10,7 +10,7 @@ HEADER-TITLE
 
 
 <header class="video-header">
-    <video src="assets/img/Venice_Beach.mp4" autoplay loop playsinline muted></video>
+    <video src="" autoplay loop playsinline muted></video>
     <div class="viewport-header">
         <div class="text-component text-center line-height-lg v-space-md margin-bottom-md">
             <h1 class="background-h1">Voyager est la seule chose </h1>
@@ -55,7 +55,7 @@ HEADER-TITLE
                     </a>
 
                     <div class="padding-sm text-center">
-                        <h3><a class="color-inherit" href="#0"><?=$best_destination->getLocation()?></a></h3>
+                        <h3><a class="color-inherit" href="views/destiByTo.php?id=<?=$onebest->getId()?>"><?=$best_destination->getLocation()?></a></h3>
 
                         <div class="margin-top-xs">
                             <span class="prod-card__price">à partir de <?=$best_destination->getPrice()?> €</span>
@@ -102,7 +102,7 @@ HEADER-TITLE
 
                         <div class="card-v13 col-12 col-6@md col-4@lg">
 
-                            <a class="card-v13__figure-wrapper" href="#0">
+                            <a class="card-v13__figure-wrapper" href="views/destiListe.php?destination=<?=$lineDestination->getLocation()?>">
                                 <figure class="card-v13__figure">
                                     <img src="<?=$lineDestination->getImg()?>" alt="Image description" loading="lazy">
                                 </figure>

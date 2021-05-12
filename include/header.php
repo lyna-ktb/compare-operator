@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
-    <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2015/09/28/08/07/map-961700_1280.png" type="image/x-icon">
+    <link rel="shortcut icon" href="http://assets.stickpng.com/images/586ae70bb6fc1117b60b278d.png" type="image/x-icon">
     <link rel="stylesheet" href="/tourop/assets/scss/style.css">
-    <title>ComparOpérator</title>
+    <title>Compar Operator</title>
 </head>
 
 <body>
@@ -63,7 +63,7 @@
             </nav>
 
             <footer class="padding-md margin-top-auto">
-                <a href="/tourop/views/login.php" class="menu-sign"> admin<i class="fal fa-sign-in-alt" style="font-size: 2rem; padding-top:20px"></i></a>
+                <a href="/tourop/views/login.php" class="menu-sign" style="color: black; font-weight:600;"> ADMIN  &nbsp; <i class="fal fa-sign-in-alt" style="font-size: 1.8rem; font-weight:350;"></i> </a>
 
             </footer>
         </div>

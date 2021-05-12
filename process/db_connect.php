@@ -1,8 +1,8 @@
 <?php
 
 $dsn = 'mysql:dbname=ComparOperator;host=127.0.0.1';
-$user = 'jean';
-$password = 'root';
+$user = 'root';
+$password = '';
 
 try {
     $bdd = new PDO($dsn, $user, $password);

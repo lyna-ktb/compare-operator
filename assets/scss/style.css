@@ -13927,25 +13927,13 @@ Usage: codyhouse.co/license
   pointer-events: none;
 }
 
-/*.select{
-  border: gray solid 2px;
-  width: auto;
+.admin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.select-admin{
-  margin-top: 70px;
-  border-radius: 3rem;
-  border: gray 1px;
-  width: 40px;
-}
-
-.admin-link{
-  justify-content: end;
-  align-items: flex-end;
-}
-.admin{
-  margin-top: 7rem;
-}*/
 /* --------------------------------
 
 File#: _1_character-count
